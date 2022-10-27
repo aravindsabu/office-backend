@@ -52,5 +52,10 @@ public class SecurityController {
     public List<SecurityModel>viewSecurity(){
         return (List<SecurityModel>) dao.findAll();
     }
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/loginSecurity",consumes = "application/json",produces = "application/json")
+    public List<SecurityModel> loginSecurity(@RequestBody SecurityModel security){
+        return (List<SecurityModel>) dao.loginSecurity(security.getUsername(),security.getPassword());
+    }
 
 }

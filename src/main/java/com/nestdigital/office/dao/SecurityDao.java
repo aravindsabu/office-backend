@@ -19,4 +19,9 @@ public interface SecurityDao extends CrudRepository<SecurityModel,Integer> {
     @Modifying
     @Query(value = "DELETE FROM `security_data` WHERE security_code=:security_code ",nativeQuery = true)
     void deleteSecurityById(Integer security_code);
+
+
+    @Query(value = "SELECT `id`, `address`, `dateofjoin`, `password`, `phone_number`, `security_code`, `security_name`, `username` FROM `security_data` WHERE `username`=:username AND `password`=:password",nativeQuery = true)
+    List<SecurityModel>loginSecurity(String username,String password );
+
 }
